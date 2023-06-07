@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Etch-A-Sketch</title>
+  </head>
+  <body>
+
+
+    <div class="header">
+        <h1>Etch-A-Sketch</h1>
+    </div>
+
+    <div class="setup">
+        <div class="controls">
+            <label for="squares">Squares:</label>
+            <input id="squares" type="range" name="squares" min="16" max="50" value="16">
+            <label for="base">Color</label>
+            <input id="base" type="color" name="base" value="#000000">
+            <label for="bnw">BlackNWhite</label>
+            <input id="bnw" type="button" name="bnw" value="BnW">
+            <label for="rainbow">Rainbow</label>
+            <input id="rainbow" type="button" name="rainbow" value="Rainbow">
+            <label for="reset">Reset</label>
+            <input id="reset" type="button" name="reset" value="Reset">
+        </div>
+        <div class="screen"></div>
+    </div>
+
+    <div class="footer">
+        <div>Copyright @ MJXX-The Odin Project</div>
+    </div>
+  </body>
+</html>
