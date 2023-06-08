@@ -11,23 +11,26 @@
 
 
     <div class="header">
-        <h1>Etch-A-Sketch</h1>
+        Etch-A-Sketch
     </div>
 
     <div class="setup">
+      <div class="controls-wrapper">
         <div class="controls">
-            <label for="squares">Squares:</label>
+            <label for="squares">Grid size:</label>
             <input id="squares" type="range" name="squares" min="16" max="50" value="16">
-            <label for="base">Color</label>
+            <label for="base">Color:</label>
             <input id="base" type="color" name="base" value="#000000">
-            <label for="bnw">BlackNWhite</label>
             <input id="bnw" type="button" name="bnw" value="BnW">
-            <label for="rainbow">Rainbow</label>
             <input id="rainbow" type="button" name="rainbow" value="Rainbow">
-            <label for="reset">Reset</label>
+            <input id="eraser" type="button" name="eraser" value="Eraser">
+            <input id="grid-lines" type="button" name="grid-lines" value="Grid Lines">
             <input id="reset" type="button" name="reset" value="Reset">
         </div>
+        </div>
+        <div class="wrapper">
         <div class="screen"></div>
+        </div>
     </div>
 
     <div class="footer">

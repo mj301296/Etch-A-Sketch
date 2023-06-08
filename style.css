@@ -1,34 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
+/* font from https://www.dafont.com/game-over.font */
+@font-face {
+    font-family: gameover;
+    src: url('game_over.woff') format('woff'),
+         url('game_over.ttf') format('ttf');
+  }
+
+body {
+    background-color: #181818;
+    margin: 0;
+    text-align: center;
+    font-family: gameover;
+    font-size: 80px;
+    color: #F9FAF8;
+}
+
+
+.header{
+    /* background-color: #1F2937; */
+    color: #F9FAF8;
+    font-size: 200px;
+}
 
 .setup {
     display: flex;
+    justify-content: center;
+    align-items:center
 }
 
 
 .controls{
     display: flex;
     flex-direction: column;
+    padding: 5%;
+    
+}
+
+
+.controls > input{
+    margin: 5%;
+    flex: 1 0 0%;
+    font-family: gameover;
+    font-size: 40px;
 }
 
 .setup div{
     flex: 1 1 0%;
 }
+input {
+    width: 100px;
+    align-self: center;
+    background-color: #F9FAF8;
+  }
+
+  .setup .controls-wrapper {
+    max-height: 505px;
+    max-width: 200px;
+    background-color: #202020;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 5% 0% 10% 10%;
+}
+
+.setup .wrapper {
+    flex: 2 1 0%;
+    max-height: 505px;
+    max-width: 505px;
+    background-color: #202020;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 5% 10%;
+}
 
 .setup .screen{
+    background-color: #F9FAF8;
     height: 500px;
-    width:500px;
-    margin: 5%;
-    flex: 3 1 0%;
+    max-width:500px;
     display: flex;
     flex-direction: column;
 }
 
-.screen div{
+.screen .column{
     border-style: solid;
     border-width: 0.1px;
+    border-color: #202020;
 }
+
+.screen .column:hover{
+    transform: scale(1.1);
+    border-color: #202020;
+    box-shadow: 0 0 1rem #202020;
+  }
+
+  .click{
+    transform: scale(1.1);
+    border-color: #202020;
+    box-shadow: 0 0 1rem #ffffff;
+  }
 
 
 .row{
     display:flex;
 }
+
+
+.footer {
+    /* bottom: 0;
+    left: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    color: #F9FAF8;
+  }
