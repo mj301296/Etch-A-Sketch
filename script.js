@@ -3,6 +3,7 @@ const square = document.querySelector('#squares');
 const base = document.querySelector('#base');
 const bnw = document.querySelector('#bnw');
 const rainbow = document.querySelector('#rainbow');
+const shader = document.querySelector('#shader');
 const eraser = document.querySelector('#eraser');
 const gridLines = document.querySelector('#grid-lines');
 const reset = document.querySelector('#reset');
@@ -10,20 +11,20 @@ const reset = document.querySelector('#reset');
 
 const DEFAULT_SQUARES = 16;
 const DEFAULT_COLOR = '#000000';
+const DEFAULT_BACKGROUND = '#F9FAF8';
 let squares = 16;
 let color = '#000000';
-let isRainbow = false;
+let drawType = `D`;
 let add = ``;
 let isDraw = false;
 let hue =0;
-
 function updatePage(){
     squares= square.value;
     let add = ``;
     for(let i=squares;i>0;i--)
     {   add+=`<div class=row>`;
         for(let j=squares;j>0;j--)
-            add+=`<div class=column></div>`;
+            add+=`<div class=column data-shade=100></div>`;
         add+=`</div>`;
     }
     screen.innerHTML = add;
@@ -37,20 +38,37 @@ function updatePage(){
 
 function draw(){
     if(isDraw){
-        this.style.background = color;
-        if(isRainbow)
+        if(drawType === `S`)
         {
+            if(this.dataset.shade > 0)
+            {
+                let shader =255 * (this.dataset.shade/100);
+                this.style.background = `rgb(${shader},${shader},${shader})`
+                this.dataset.shade = this.dataset.shade-5;
+            }
+        }
+        else if(drawType === `E`)
+        {
+            this.dataset.shade = 100;
+            this.style.background = DEFAULT_BACKGROUND;
+        }
+       else if(drawType === `R`)
+        {
+            this.style.background = color;
             hue++;
             if(hue>500)
                 hue =0;
             color = `hsl(${hue}, 80%, 50%)`;
+        }
+        else{
+            this.style.background = color;
         }
     }
 }
 
 function updateColor(){
     color = this.value;
-    isRainbow = false;
+    drawType = `D`;
 }
 
 
@@ -69,48 +87,55 @@ base.addEventListener('input', updateColor);
 base.addEventListener('input', ()=>{
         bnw.classList.remove('click');
         rainbow.classList.remove('click');
+        shader.classList.remove('click');
         eraser.classList.remove('click');
 });
 bnw.addEventListener('click', (e)=>{
     glowButton(e);
     rainbow.classList.remove('click');
+    shader.classList.remove('click');
     eraser.classList.remove('click');
     color = DEFAULT_COLOR;
-    if(isRainbow ==true){
-        isRainbow =false;
-    }
+    drawType = `D`;
 });
 
 rainbow.addEventListener('click', (e)=>{
     glowButton(e);
     bnw.classList.remove('click');
+    shader.classList.remove('click');
     eraser.classList.remove('click');
     color = `hsl(${hue}, 100%, 50%)`;
-    if(isRainbow ==false){
-        isRainbow =true;
-    }
+    drawType = `R`;
+});
+
+shader.addEventListener('click', (e)=>{
+    glowButton(e);
+    bnw.classList.remove('click');
+    rainbow.classList.remove('click');
+    eraser.classList.remove('click');
+    drawType = `S`;
 });
 
 eraser.addEventListener('click', (e)=>{
     glowButton(e);
     bnw.classList.remove('click');
     rainbow.classList.remove('click');
+    shader.classList.remove('click');
     color = `#F9FAF8`;
-    if(isRainbow ==true){
-        isRainbow =false;
-    }
+    drawType = `E`;
 });
 
 
 reset.addEventListener('click', ()=>{
     bnw.classList.remove('click');
     rainbow.classList.remove('click');
+    shader.classList.remove('click');
     eraser.classList.remove('click');
     square.value = DEFAULT_SQUARES;
     color = DEFAULT_COLOR;
     base.value = DEFAULT_COLOR;
     isDraw= false;
-    isRainbow = false;
+    drawType = `D`;
     updatePage();
 })
 

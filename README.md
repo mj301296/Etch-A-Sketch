@@ -11,7 +11,12 @@
 Created a Retro Pixel Sketch App.
 
 - Grid size supported from 16x16 to 50x50
-- Choose Modes from Black n White and Rainbow
+- Choose Modes:
+  - Black n White
+  - Color
+  - Rainbow
+  - Shader
+- Color picker to pick any color on screen
 - Eraser to correct your mistakes
 - Toggle between grid lines
 
